@@ -3,9 +3,7 @@ name = "291dproject"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "RdlphESTP", email = "pro.rdlph@gmail.com" }
-]
+authors = [{ name = "RdlphESTP", email = "pro.rdlph@gmail.com" }]
 requires-python = ">=3.12"
 dependencies = [
     "lightgbm>=4.7.0",
@@ -15,9 +13,6 @@ dependencies = [
     "scikit-learn>=1.9.1",
     "scipy>=1.18.1",
 ]
-
-[project.scripts]
-291dproject = "291dproject:main"
 
 [project.optional-dependencies]
 nb = [
