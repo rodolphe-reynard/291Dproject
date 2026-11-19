@@ -11,8 +11,8 @@ from project291d.rl.mock_environment import MockBridgeEnvironment
 from project291d.rl.q_learning import QLearningAgent
 
 
-def evaluate(model_path="rl_outputs/q_table.npz", episodes=500,
-             output_path="rl_outputs/evaluation.csv", seed=2026):
+def evaluate(model_path="outputs/q_table.npz", episodes=500,
+             output_path="outputs/evaluation.csv", seed=2026):
     agent = QLearningAgent.load(model_path)
     results = []
     methods = ("Q-learning", "Never act", "Periodic inspect", "Fixed threshold")
@@ -86,8 +86,8 @@ def evaluate(model_path="rl_outputs/q_table.npz", episodes=500,
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", default="rl_outputs/q_table.npz")
+    parser.add_argument("--model", default="outputs/q_table.npz")
     parser.add_argument("--episodes", type=int, default=500)
-    parser.add_argument("--output", default="rl_outputs/evaluation.csv")
+    parser.add_argument("--output", default="outputs/evaluation.csv")
     args = parser.parse_args()
     evaluate(args.model, args.episodes, args.output)

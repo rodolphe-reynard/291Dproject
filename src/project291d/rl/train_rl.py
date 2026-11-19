@@ -9,7 +9,7 @@ from project291d.rl.mock_environment import MockBridgeEnvironment
 from project291d.rl.q_learning import QLearningAgent
 
 
-def train(episodes=10000, model_path="rl_outputs/q_table.npz", seed=42):
+def train(episodes=10000, model_path="outputs/q_table.npz", seed=42):
     env = MockBridgeEnvironment(seed=seed)
     agent = QLearningAgent(seed=seed + 1)
     returns = []
@@ -39,7 +39,7 @@ def train(episodes=10000, model_path="rl_outputs/q_table.npz", seed=42):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--episodes", type=int, default=10000)
-    parser.add_argument("--model", default="rl_outputs/q_table.npz")
+    parser.add_argument("--model", default="outputs/q_table.npz")
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
     train(args.episodes, args.model, args.seed)

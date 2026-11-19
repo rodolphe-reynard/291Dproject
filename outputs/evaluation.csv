@@ -1,0 +1,5 @@
+policy,mean_total_cost,std_total_cost,mean_risk_cost,mean_repairs
+Q-learning,93.689,27.609,50.015,0.0
+Never act,170.264,70.801,170.264,0.0
+Periodic inspect,182.879,73.048,172.879,0.0
+Fixed threshold,99.585,27.471,62.933,0.304

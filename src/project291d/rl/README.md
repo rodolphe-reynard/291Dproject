@@ -26,12 +26,12 @@ rl/
 
 **Actions:**
 
-| ID | Action |
-|---|---|
-| 0 | Do nothing |
-| 1 | Inspect |
-| 2 | Restrict load |
-| 3 | Repair |
+| ID  | Action        |
+| --- | ------------- |
+| 0   | Do nothing    |
+| 1   | Inspect       |
+| 2   | Restrict load |
+| 3   | Repair        |
 
 **Objective:** Minimize cumulative maintenance costs and structural damage risk.
 
@@ -55,7 +55,7 @@ Default configuration:
 The trained Q-table is saved as:
 
 ```text
-rl_outputs/q_table.npz
+outputs/q_table.npz
 ```
 
 ## 5. Evaluation
@@ -76,23 +76,23 @@ The evaluation compares Q-learning against three baseline policies:
 
 Results from 500 evaluation episodes using the mock environment:
 
-| Policy | Mean Total Cost | Mean Risk Cost | Mean Repairs |
-|---|---:|---:|---:|
-| Q-learning | 93.69 | 50.02 | 0.00 |
-| Never act | 170.26 | 170.26 | 0.00 |
-| Periodic inspect | 182.88 | 172.88 | 0.00 |
-| Fixed threshold | 99.58 | 62.93 | 0.30 |
+| Policy           | Mean Total Cost | Mean Risk Cost | Mean Repairs |
+| ---------------- | --------------: | -------------: | -----------: |
+| Q-learning       |           93.69 |          50.02 |         0.00 |
+| Never act        |          170.26 |         170.26 |         0.00 |
+| Periodic inspect |          182.88 |         172.88 |         0.00 |
+| Fixed threshold  |           99.58 |          62.93 |         0.30 |
 
 Q-learning reduced total simulated cost by approximately 45% compared with the Never Act baseline.
 
 ### Learned Action Distribution
 
-| Action | Frequency |
-|---|---:|
-| Do nothing | 77.09% |
-| Inspect | 0.10% |
-| Restrict load | 22.81% |
-| Repair | 0.00% |
+| Action        | Frequency |
+| ------------- | --------: |
+| Do nothing    |    77.09% |
+| Inspect       |     0.10% |
+| Restrict load |    22.81% |
+| Repair        |     0.00% |
 
 ## 6. Limitations and Future Work
 
