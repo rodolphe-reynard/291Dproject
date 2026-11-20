@@ -2,6 +2,7 @@
 
 import numpy as np
 
+from project291d.data.config import SEVERITY
 from project291d.rl.reward import RewardConfig, calculate_reward
 
 
@@ -23,12 +24,7 @@ class BridgeSimulation:
         restricted_progression=0.04,
         reward_config=None,
     ):
-        # Zero damage in scenarios 1, 2, 8; other scores are illustrative assignments.
-        self.SEVERITY = {
-            1: 0.0, 2: 0.0, 8: 0.0,
-            3: 0.15, 4: 0.28, 5: 0.43, 6: 0.60, 7: 0.75,
-            9: 0.18, 10: 0.30, 11: 0.42, 12: 0.55, 13: 0.62, 14: 0.70, 15: 0.78, 16: 0.88, 17: 1.0
-        }
+
         self.PIER_PATH = (3, 4, 5, 6, 7)
         self.CUMULATIVE_PATH = (9, 10, 11, 12, 13, 14, 15, 16, 17)
 
@@ -42,7 +38,7 @@ class BridgeSimulation:
 
     def _observe(self, inspected=False):
         """Return the predicted severity, load restriction status, and inspection status."""
-        severity = self.SEVERITY[self.scenario]
+        severity = SEVERITY[self.scenario]
         prediction = (
             severity if inspected else  # return true severity if action was "inspect"
             # TODO: replace with actual predicted severity score from ML classifier
@@ -114,7 +110,7 @@ class BridgeSimulation:
                     self.scenario = self.path[min(idx + 1, len(self.path) - 1)]
 
         # Outputs
-        severity = self.SEVERITY[self.scenario]
+        severity = SEVERITY[self.scenario]
         reward, costs = calculate_reward(
             action, severity, was_restricted, self.restricted, self.reward_config
         )
