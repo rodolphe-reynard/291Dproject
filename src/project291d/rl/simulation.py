@@ -5,7 +5,7 @@ import numpy as np
 from project291d.rl.reward import RewardConfig, calculate_reward
 
 
-class MockBridgeEnvironment:
+class BridgeSimulation:
     """
     Temporary simulator; scenario severities and transitions are assumptions, not Z24 measurements.
 

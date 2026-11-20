@@ -1,4 +1,3 @@
-
 # Evaluate RL policies and analyze the action distribution.
 
 import argparse
@@ -7,8 +6,8 @@ from pathlib import Path
 
 import numpy as np
 
-from project291d.rl.mock_environment import MockBridgeEnvironment
 from project291d.rl.q_learning import QLearningAgent
+from project291d.rl.simulation import BridgeSimulation
 
 
 def evaluate(model_path="outputs/q_table.npz", episodes=500,
@@ -24,7 +23,7 @@ def evaluate(model_path="outputs/q_table.npz", episodes=500,
 
         for ep in range(episodes):
             # Use the same seed for comparable random conditions.
-            env = MockBridgeEnvironment(seed=seed + ep)
+            env = BridgeSimulation(seed=seed + ep)
             observation = env.reset()
             total_cost = total_risk = repairs = 0.0
 
@@ -40,7 +39,7 @@ def evaluate(model_path="outputs/q_table.npz", episodes=500,
 
                 action_counts[action] += 1
 
-                observation, reward, done, info = env.step(action)
+                observation, _, done, info = env.step(action)
                 total_cost += info["total_cost"]
                 total_risk += info["risk_cost"]
                 repairs += int(action == 3)

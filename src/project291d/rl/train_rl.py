@@ -5,12 +5,12 @@ from pathlib import Path
 
 import numpy as np
 
-from project291d.rl.mock_environment import MockBridgeEnvironment
 from project291d.rl.q_learning import QLearningAgent
+from project291d.rl.simulation import BridgeSimulation
 
 
 def train(episodes=10000, model_path="outputs/q_table.npz", seed=42):
-    env = MockBridgeEnvironment(seed=seed)
+    env = BridgeSimulation(seed=seed)
     agent = QLearningAgent(seed=seed + 1)
     returns = []
 
